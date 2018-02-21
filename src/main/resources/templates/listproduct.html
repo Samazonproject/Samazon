@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+<th:block th:replace="fragment::top"></th:block>
+<head>
+
+</head>
+<body>
+
+<nav th:replace="fragment :: navbar"></nav>
+<section>
+
+    <div class="container">
+
+        <ul  class="row" th:each="product : ${products}">
+            <li th:text="${product.productName}"></li>
+            <li th:text="${product.productDesc}"></li>
+            <li th:text="${product.brand}"></li>
+            <li  th:text="${product.color}"></li>
+            <li th:text="${product.feature}"></li>
+            <li> <a href="#" th:href="@{/products/detail/{prodid} (prodid = ${product.id})}">Details</a></li>
+            <li><a href="#" th:href="@{/products/edit/{prodid} (prodid = ${product.id})}">Update</a> </li>
+           <li> <a href="#" th:href="@{/products/delete/{prodid} (prodid = ${product.id})}">Delete</a></li>
+
+        </ul>
+    </div><!-- /.container -->
+</section>
+<section>
+    <span th:replace="fragment::bootstrap4js"></span>
+</section>
+</body>
+</html>

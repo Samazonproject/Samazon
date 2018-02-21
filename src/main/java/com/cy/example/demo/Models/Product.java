@@ -13,12 +13,10 @@ public class Product {
     private long id;
     private String productName;
     private String productDesc;
-
-    //Use BigDecimal for any monetary object
     private BigDecimal price;
     private String brand;
     private String color;
-
+    private String feature;
     public Product() {
     }
 
@@ -31,7 +29,7 @@ public class Product {
         this.feature = feature;
     }
 
-    private String feature;
+
 
     public long getId() {
         return id;

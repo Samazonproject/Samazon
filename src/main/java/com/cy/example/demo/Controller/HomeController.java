@@ -1,6 +1,8 @@
 package com.cy.example.demo.Controller;
 
+import com.cy.example.demo.Models.Product;
 import com.cy.example.demo.Models.User;
+import com.cy.example.demo.Repositories.ProductRepository;
 import com.cy.example.demo.Service.UserService;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
@@ -28,6 +30,9 @@ public class HomeController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    ProductRepository productRepository;
 
     @RequestMapping("/")
     public String index(){
@@ -61,6 +66,19 @@ public class HomeController {
             model.addAttribute("message","User Account Successfully Created");
         }
         return "index";
+    }
+
+    @RequestMapping("/addproduct")
+    public String addProduct(Model model, Product product){
+        model.addAttribute("product", new Product());
+        productRepository.save(product);
+        return "addproduct";
+    }
+
+    @RequestMapping("/listproduct")
+    public String listProduct(Model model, Product product){
+        model.addAttribute("products", productRepository.findAll());
+       return "listproduct";
     }
 
 }
