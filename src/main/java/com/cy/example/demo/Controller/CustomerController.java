@@ -1,14 +1,13 @@
 package com.cy.example.demo.Controller;
 
+import com.cy.example.demo.Models.Customer;
 import com.cy.example.demo.Models.Product;
 import com.cy.example.demo.Models.User;
+import com.cy.example.demo.Repositories.CustomerRepository;
 import com.cy.example.demo.Repositories.ProductRepository;
 import com.cy.example.demo.Service.UserService;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,22 +16,24 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.security.Principal;
 
 /**
  * Created by ${TravisGray} on 11/13/2017.
  */
 
 @Controller
-public class HomeController {
+@RequestMapping("/Customer")
+public class CustomerController {
 
     @Autowired
     UserService userService;
 
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    CustomerRepository customerRepository;
 
     @RequestMapping("/")
     public String index(){
@@ -68,17 +69,44 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping("/addproduct")
-    public String addProduct(Model model, Product product){
-        model.addAttribute("product", new Product());
-        productRepository.save(product);
-        return "addproduct";
+
+//    @RequestMapping("/addproduct")
+//    public String addProduct(Model model, Product product){
+//        model.addAttribute("product", new Product());
+//        productRepository.save(product);
+//        return "addproduct";
+//    }
+//
+//    @RequestMapping("/listproduct")
+//    public String listProduct(Model model, Product product){
+//        model.addAttribute("products", productRepository.findAll());
+//       return "listproduct";
+//    }
+
+    //Added full Mapping for CustomerForm to display to Customer List
+
+    @GetMapping("/addCustomer")
+    public String customerForm(Model model){
+        model.addAttribute("customer", new Customer());
+        return "customerForm";
     }
 
-    @RequestMapping("/listproduct")
-    public String listProduct(Model model, Product product){
-        model.addAttribute("products", productRepository.findAll());
-       return "listproduct";
+    @PostMapping("/processCustomer")
+    public String customerForm(@Valid @ModelAttribute("customer") Customer customer, Model model,BindingResult result)
+    {
+        if (result.hasErrors()){
+            return "customerForm";
+        }
+
+        model.addAttribute("customers",customerRepository.findAll());
+        customerRepository.save(customer);
+        return "customerList";
     }
 
+    @GetMapping("/listCustomer")
+    public String customerList(Model model){
+        model.addAttribute("customers",customerRepository.findAll());
+
+        return "customerList";
+    }
 }

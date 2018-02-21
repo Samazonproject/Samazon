@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Customer List</title>
+</head>
+<body>
+You have reached customer List
+
+<!--private String name;
+private String description;
+private String shippingAddress;
+private String emailAddress;-->
+
+<div    th:each="customer : ${customers}">
+    <h4 th:inline="text"> Title: [[${customer.name}]] </h4>
+    <h4 th:inline="text"> Descrition: [[${customer.description}]] </h4>
+    <h4 th:inline="text"> Shipping Address: [[${customer.shippingAddress}]] </h4>
+    <h4 th:inline="text"> Email: [[${customer.email}]] </h4>
+
+</div>
+<script></script>
+
+</body>
+</html>
