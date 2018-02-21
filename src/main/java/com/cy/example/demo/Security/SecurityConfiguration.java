@@ -89,7 +89,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 //                .antmatchers: if you have a route you want to block off
 //                .permitall: dont need access pages everyone one can acees this route example:register
-                .antMatchers("/","/h2-console/**","/register","/addproduct","/listproduct").permitAll()
+                .antMatchers("/","/h2-console/**","/register","/addproduct","/listproduct","/productsdetail/**","/productupdate/**","/productdelete/**").permitAll()
 
 
 

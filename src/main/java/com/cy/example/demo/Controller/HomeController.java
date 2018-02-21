@@ -12,10 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -72,7 +69,7 @@ public class HomeController {
     public String addProduct(Model model, Product product){
         model.addAttribute("product", new Product());
         productRepository.save(product);
-        return "addproduct";
+        return "redirect:/listproduct";
     }
 
     @RequestMapping("/listproduct")
@@ -81,4 +78,22 @@ public class HomeController {
        return "listproduct";
     }
 
+    @RequestMapping("/productsdetail/{id}")
+    public String detailProduct(@PathVariable ("id") long id, Model model, Product product){
+        model.addAttribute("products", productRepository.findOne(id));
+        return "detailproduct";
+    }
+
+    @GetMapping("/productupdate/{id}")
+    public String updateProduct(@PathVariable ("id") long id, Model model, Product product){
+        model.addAttribute("product", productRepository.findOne(id));
+        return "addproduct";
+    }
+
+
+    @RequestMapping("/productdelete/{id}")
+    public String delPersonInfo(@PathVariable("id") long id){
+        productRepository.delete(id);
+        return "redirect:/listproduct";
+    }
 }

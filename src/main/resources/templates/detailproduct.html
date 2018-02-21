@@ -14,10 +14,12 @@
         <ul  class="row" th:each="product : ${products}">
             <li th:text="${product.productName}"></li>
             <li th:text="${product.productDesc}"></li>
-            <li  th:text="${product.price}"></li>
-            <li> <a href="#" th:href="@{/productsdetail/{id} (id = ${product.id})}">Details</a></li>
-            <li><a href="#" th:href="@{/productupdate/{id} (id = ${product.id})}">Update</a> </li>
-            <li> <a href="#" th:href="@{/productdelete/{id} (id = ${product.id})}">Delete</a></li>
+            <li th:text="${product.price}"></li>
+            <li th:text="${product.brand}"></li>
+            <li  th:text="${product.color}"></li>
+            <li th:text="${product.feature}"></li>
+            <li> <a href="#" th:href="@{/products/{id} (id = ${product.id})}">  Add to cart</a></li>
+            <li><a href="#" th:href="@{/products/back/{id} (id = ${product.id})}">back</a> </li>
 
 
         </ul>
