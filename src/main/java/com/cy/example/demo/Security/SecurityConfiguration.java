@@ -25,7 +25,6 @@ import static org.hibernate.criterion.Restrictions.and;
 //    In memory authenticiation want to keep on server currently running more difficult to get onto machine and keep autentician details. Very good for testing but you want encrypted databases for details
 
 
-
 //Once you have basic security setup , adding a login form is a simple process.
 
 //    Step 1: Create Login Form
@@ -40,8 +39,6 @@ import static org.hibernate.criterion.Restrictions.and;
 //    .formLogin().loginpage("/login").permitAll() This means that you are expecting a login form, which will display when you vist route: login everyone will be able to see this page
 //    if they are not Authenticated! This is the page people will see if they havent logged in yet, before they are directed to the page that they can see after
 //    logging in.
-
-
 
 
 //@Configuration and@EnableWebSecurity This indicates to the compiler that the file is a configuration file and
@@ -65,7 +62,7 @@ import static org.hibernate.criterion.Restrictions.and;
 //Runs before complier these are paths that people are premitted to vist and not
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-//WebSecruityConfigurerAdapter: http portocol to close off routes
+    //WebSecruityConfigurerAdapter: http portocol to close off routes
     @Autowired
     private SSUserDetailsService userDetailsService;
 //    These people have access from our database
@@ -81,7 +78,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new SSUserDetailsService(userRepository);
     }
 
-//    HttpSecurity: tells us which routes people are allowed to acesses includes methods to restict or alllow access
+    //Better readability to organize public routes
+    private static final String[] PUBLIC_MATCHERS = {
+            "/",
+            "/h2-console/**",
+            "/register",
+            "/addproduct",
+            "/listproduct",
+            "/productsdetail/**",
+            "/productupdate/**",
+            "/productdelete/**",
+            "/addCustomer",
+            "/listCustomer",
+            "/search",
+            "/css/**",
+            "/templates/**"
+    };
+
+    //    HttpSecurity: tells us which routes people are allowed to acesses includes methods to restict or alllow access
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -89,24 +103,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 //                .antmatchers: if you have a route you want to block off
 //                .permitall: dont need access pages everyone one can acees this route example:register
-                .antMatchers("/","/h2-console/**","/register","/addproduct","/listproduct","/productsdetail/**","/productupdate/**","/productdelete/**","/addCustomer","/listCustomer","/search","/css/**","/templates/**").permitAll()
-
-
-
-
-//                .access("hasAuthority('ROLE_USER') or hasAuthority('ROLE_ADMIN')")
-                .antMatchers("/admin").access("hasAuthority('ADMIN')")
-                .anyRequest().authenticated()
-                .and()
-                .formLogin().loginPage("/login").permitAll()
-                .and()
-                .logout()
-                .logoutRequestMatcher(
-                        new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login").permitAll().permitAll()
-                .and()
-                .httpBasic();
-
+                    .antMatchers(PUBLIC_MATCHERS).permitAll()
+                    .antMatchers("/admin").access("hasAuthority('ADMIN')")
+                        .anyRequest().authenticated()
+                        .and()
+                    .formLogin().loginPage("/login").permitAll()
+                        .and()
+                    .logout()
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .logoutSuccessUrl("/login").permitAll().permitAll()
+                        .and()
+                    .httpBasic();
         http
                 .csrf().disable();
 
@@ -125,22 +132,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //    remove the comments in the additional code. This is also the method in which you can configure how users are granted access to the appliaction if their details are stored in a database.
 
 
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
-    throws Exception{
+            throws Exception {
         auth.inMemoryAuthentication().
-        withUser("user").password("password").authorities("USER").
-        and().
-        withUser("dave").password("begreat").authorities("ADMIN");
+                withUser("user").password("password").authorities("USER").
+                    and().
+                withUser("dave").password("begreat").authorities("ADMIN");
 
 //        Database Authentication must come after in memory authentication
         auth
                 .userDetailsService(userDetailsServiceBean());
 
     }
-
-
 
 
 }
