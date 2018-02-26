@@ -5,7 +5,6 @@ package com.cy.example.demo.Security;
 import com.cy.example.demo.Models.Role;
 import com.cy.example.demo.Models.User;
 import com.cy.example.demo.Repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

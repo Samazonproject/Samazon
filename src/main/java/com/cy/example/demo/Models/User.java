@@ -2,9 +2,10 @@ package com.cy.example.demo.Models;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
-@Table(name="USER_DATA")
+@Table(name = "USER_DATA")
 public class User {
 
     @Id
@@ -25,17 +26,20 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name="enabled")
+    @Column(name = "enabled")
     private boolean enabled;
 
-    @Column(name="username")
+    @Column(name = "username")
     private String username;
 
-
-//use Fetch Type Eager user all data will be avivalible for this object
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(joinColumns = @JoinColumn(name="user_id"),
-    inverseJoinColumns = @JoinColumn(name="role_id"))
+    private Set<ShoppingCart> shoppingCarts;
+
+
+    //use Fetch Type Eager user all data will be avivalible for this object
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
     public User() {
@@ -49,7 +53,6 @@ public class User {
         this.enabled = enabled;
         this.username = username;
     }
-
 
 
     public String getFirstName() {
@@ -85,7 +88,6 @@ public class User {
     }
 
 
-
     public String getLastName() {
         return lastName;
     }
@@ -116,5 +118,38 @@ public class User {
 
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
+    }
+
+    public Set<ShoppingCart> getShoppingCarts() {
+        return shoppingCarts;
+    }
+
+    public void setShoppingCarts(Set<ShoppingCart> shoppingCarts) {
+        this.shoppingCarts = shoppingCarts;
+    }
+
+    public void addProduct2ShoppingCart(Product product) {
+        ShoppingCart sc = new ShoppingCart();
+        if(shoppingCarts.size() == 0){
+            shoppingCarts.add(sc);
+        }else{
+            for(ShoppingCart shoppingCart : shoppingCarts){
+                sc = shoppingCart;
+            }
+        }
+        sc.addProduct2ShoppingCart(product);
+    }
+
+    public void removeProductFromShoppingCart(Product product) {
+        ShoppingCart sc = new ShoppingCart();
+        if(shoppingCarts.size() == 0){
+            System.out.println("Shopping cart does not even exist which means product cannot be removed");
+            return;
+        }else{
+            for(ShoppingCart shoppingCart : shoppingCarts){
+                sc = shoppingCart;
+            }
+        }
+        sc.removeProductFromShoppingCart(product);
     }
 }

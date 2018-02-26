@@ -1,40 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8"/>
-    <title>Customer List</title>
+    <title>Title</title>
+    <div th:replace="fragment :: top"></div>
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-You have reached customer List
-
-<!--private String name;
-private String description;
-private String shippingAddress;
-private String emailAddress;-->
-
-<!--<div    th:each="customer : ${customers}">-->
-    <!--<h4 th:inline="text"> Title: [[${customer.name}]] </h4>-->
-    <!--<h4 th:inline="text"> Descrition: [[${customer.description}]] </h4>-->
-    <!--<h4 th:inline="text"> Shipping Address: [[${customer.shippingAddress}]] </h4>-->
-    <!--<h4 th:inline="text"> Email: [[${customer.email}]] </h4>-->
-
-<!--</div>-->
+<div th:replace="index2 :: header"></div>
 
 
-<section>
+<h1>List of Customers</h1>
+<table class="rwd-table" >
+    <tr>
+        <th>User Name</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+    </tr>
+    <tr th:each="row : ${listcustomer}">
+        <td data-th="User Name" th:text="${row.username}"></td>
+        <td data-th="First Name" th:text="${row.firstName}"></td>
+        <td data-th="Last Name" th:text="${row.lastName}"></td>
+        <td data-th="Email" th:text="${row.email}"></td>
+    </tr>
 
-    <div class="container">
+</table>
 
-        <ul  class="row" th:each="customer : ${customers}">
-            <li th:text="${customer.name}"></li>
-            <li th:text="${customer.description}"></li>
-            <li  th:text="${customer.shippingAddress}"></li>
-            <li  th:text="${customer.email}"></li>
-        </ul>
-    </div><!-- /.container -->
-</section>
 
-<script></script>
 
 </body>
+
 </html>

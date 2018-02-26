@@ -3,7 +3,6 @@ main[role="main"], .product .product-description {
 }
 main[role="main"]:after, .product .product-description:after {
     content: '';
-    display: table;
     clear: both;
 }
 

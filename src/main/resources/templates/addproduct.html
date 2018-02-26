@@ -2,49 +2,57 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
 <th:block th:replace="fragment::top"></th:block>
 <head>
-
+    <div th:replace="fragment :: top"></div>
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
 
-<nav th:replace="fragment :: navbar"></nav>
-<section>
-    <div class="container">
+<div th:replace="index2 :: header"></div>
 
-        <form th:action="@{/addproduct}" th:object="${product}" method="post">
+
+<div class="body-content">
+    <div class="module">
+        <h1>Add <Products></Products></h1>
+        <form class="form" action="#" th:action="@{/addproduct}" th:object="${product}" method="post">
             <input type="hidden" th:field="*{id}">
 
 
             <label>Product Name</label>
             <span th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"></span>
-            <input type="text" class="form-control" th:field="*{productName}">
+            <input type="text" class="form-control" placeholder="Product Name" th:field="*{productName}">
 
             <label >Product Description</label>
             <span th:if="${#fields.hasErrors('productDesc')}" th:errors="*{productDesc}"></span>
-            <input type="text" class="form-control" th:field="*{productDesc}">
+            <input type="text" class="form-control" placeholder="Product Description" th:field="*{productDesc}">
 
             <label >price</label>
             <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
-            <input type="number" class="form-control" th:field="*{price}">
+            <input type="number"placeholder="Price" class="form-control" th:field="*{price}">
 
 
             <label >Brand</label>
             <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"></span>
-            <input type="text" class="form-control" th:field="*{brand}">
+            <input type="text" placeholder="Brand"class="form-control" th:field="*{brand}">
 
             <label >Color</label>
             <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></span>
-            <input type="text" class="form-control" th:field="*{color}">
+            <input type="text"placeholder="Color" class="form-control" th:field="*{color}">
 
             <label >Feature</label>
             <span th:if="${#fields.hasErrors('feature')}" th:errors="*{feature}"></span>
-            <input type="text" class="form-control" th:field="*{feature}">
+            <input type="text" placeholder="Features" class="form-control" th:field="*{feature}">
 
-            <button type="submit" class="btn btn-default">Save</button>
+            <label >Image</label>
+            <span th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></span>
+            <input type="text" placeholder="Image" class="form-control" th:field="*{image}">
+
+            <input type="submit" value="Save" name="save" class="btn btn-block btn-primary" />
+
 
         </form>
-
     </div>
-</section>
+</div>
+
 <section>
     <span th:replace="fragment::bootstrap4js"></span>
 </section>

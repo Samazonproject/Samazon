@@ -1,16 +1,15 @@
 package com.cy.example.demo.Controller;
 
-import com.cy.example.demo.Models.Customer;
 import com.cy.example.demo.Models.Product;
+import com.cy.example.demo.Models.ShoppingCart;
 import com.cy.example.demo.Models.User;
-import com.cy.example.demo.Repositories.CustomerRepository;
 import com.cy.example.demo.Repositories.ProductRepository;
+import com.cy.example.demo.Repositories.ShoppingCartRepository;
+import com.cy.example.demo.Repositories.UserRepository;
 import com.cy.example.demo.Service.UserService;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.security.Principal;
 
 /**
  * Created by ${TravisGray} on 11/13/2017.
@@ -28,17 +26,20 @@ import java.security.Principal;
 public class HomeController {
 
     @Autowired
-    UserService userService;
+   private UserService userService;
 
     @Autowired
-    CustomerRepository customerRepository;
+    private UserRepository userRepository;
 
+@Autowired
+    ShoppingCartRepository shoppingCartRepository;
 
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     @RequestMapping("/")
-    public String index(){
+    public String index(Model model){
+
         return "index2";
     }
 
@@ -53,8 +54,11 @@ public class HomeController {
     }
 
     @GetMapping("/register")
-    public String showRegistrationPage(Model model){
-        model.addAttribute("user",new User());
+    public String showRegistrationPage(Model model, Authentication auth){
+        /*if(auth.getName().equals("USER")){*/
+            model.addAttribute("user",new User());
+            model.addAttribute("shoppingcart",new ShoppingCart());
+
         return "registration";
     }
 
@@ -84,6 +88,14 @@ public class HomeController {
        return "listproduct2";
     }
 
+    @GetMapping("/shoppingcart/product/{id}")
+    public String addproductstoshoppingcart(@PathVariable long id, Model model,Authentication auth){
+        Product product = productRepository.findOne(id);
+        User user = userRepository.findByUsername(auth.getName());
+        user.addProduct2ShoppingCart(product);
+        return "addproducttoshoppingcart";
+    }
+
     @RequestMapping("/productsdetail/{id}")
     public String detailProduct(@PathVariable ("id") long id, Model model, Product product){
         model.addAttribute("products", productRepository.findOne(id));
@@ -103,29 +115,10 @@ public class HomeController {
         return "redirect:/listproduct2";
     }
 
-    //Added full Mapping for CustomerForm to display to Customer List
-
-    @GetMapping("/addCustomer")
-    public String customerForm(Model model){
-        model.addAttribute("customer", new Customer());
-        return "customerForm";
-    }
-
-    @PostMapping("/processCustomer")
-    public String customerForm(@Valid @ModelAttribute("customer") Customer customer, Model model, BindingResult result)
-    {
-        if (result.hasErrors()){
-            return "customerForm";
-        }
-
-        model.addAttribute("customers",customerRepository.findAll());
-        customerRepository.save(customer);
-        return "customerList";
-    }
 
     @GetMapping("/listCustomer")
     public String customerList(Model model){
-        model.addAttribute("customers",customerRepository.findAll());
+        model.addAttribute("listcustomer",userRepository.findAll());
 
         return "customerList";
     }
@@ -149,6 +142,7 @@ public class HomeController {
 //
         return "searchproductlist";
     }
+
 
 
 }
