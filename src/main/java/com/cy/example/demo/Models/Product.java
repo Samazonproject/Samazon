@@ -17,19 +17,27 @@ public class Product {
     private String brand;
     private String color;
     private String feature;
+    private String image;
     public Product() {
     }
 
-    public Product(String productName, String productDesc, BigDecimal price, String brand, String color, String feature) {
+    public Product(String productName, String productDesc, BigDecimal price, String brand, String color, String feature, String image) {
         this.productName = productName;
         this.productDesc = productDesc;
         this.price = price;
         this.brand = brand;
         this.color = color;
         this.feature = feature;
+        this.image = image;
     }
 
+    public String getImage() {
+        return image;
+    }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public long getId() {
         return id;

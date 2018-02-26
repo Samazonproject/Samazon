@@ -10,17 +10,20 @@
 </head>
 
 <body>
+<div th:fragment="header">
 <header>
     <nav>
         <h1 class="companyLogo">Samazon</a></h1>
+        <h1 th:fragment="currentuser" class="companyLogo">Account:<span th:text ="${#authentication.getName()}"></span></h1>
         <ul>
             <li><a href="#">What We Do</a></li>
             <li><a href="#">Our Philosophy</a></li>
             <li><a href="#">Shopping</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">Blog</a></li>
-            <li sec:authentication="name"><a th:href="@{/books/add}">Add product</a></li>
-            <li><a th:href="@{/books/list}">Show product list</a></li>
+            <li><a th:href="@{/register}">Register</a></li>
+            <li><a th:href="@{/addproduct}">Add product</a></li>
+            <li><a th:href="@{/listproduct}">Show product list</a></li>
             <li><a th:href="@{/addCustomer}">Add Customer</a></li>
             <li><a th:href="@{/listCustomer}">Show Customerlist</a></li>
             <li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
@@ -28,11 +31,12 @@
         </ul>
     </nav>
 </header>
+</div>
 
 
 
 
-<div class="featuresSection">
+<div th:fragment="features" class="featuresSection">
     <h1 class="sectionTitle">We're Samazon</h1>
     <div class = "feature">
         <i class="fa fa-2x fa-bolt" aria-hidden="true"></i>

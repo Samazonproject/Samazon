@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/productlist.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+<div th:replace="index2 :: header"></div>
+<div  class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-4" th:each="product : ${products}">
+            <br>
+            <br>
+            <div role="main">
+                <div class="product">
+                    <figure>
+                        <img th:src="${product.image}" alt="Product Image" class="product-image">
+                    </figure>
+
+                    <div  class="product-description">
+
+                        <div  class="info">
+                            <h1 th:inline="text">[[${product.productName}]] </h1>
+                            <p  th:inline="text">
+                                [[${product.productDesc}]]
+                            </p>
+                        </div>
+
+                        <div  th:inline="text" class="price">
+                            [[${product.price}]]
+                        </div>
+                    </div>
+
+                    <div class="product-sidebar">
+                        <button class="buy">
+                            <span>BUY ITEM</span>
+                        </button>
+
+                        <button class="info">
+                            <span>MORE INFO</span>
+                        </button>
+
+                        <button class="size">
+                            <span>SIZES</span>
+                        </button>
+
+                        <button class="colors">
+          <span>
+            <a href="" class="color black"></a>
+            <a href="" class="color white"></a>
+            <a href="" class="color red"></a>
+          </span>
+                        </button>
+                    </div>
+                </div>
+                <!--End of Product Row-->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<section>
+    <span th:replace="fragment::bootstrap4js"></span>
+</section>
+</body>
+</html>

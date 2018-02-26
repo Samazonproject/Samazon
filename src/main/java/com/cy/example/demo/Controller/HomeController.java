@@ -75,13 +75,13 @@ public class HomeController {
     public String addProduct(Model model, Product product){
         model.addAttribute("product", new Product());
         productRepository.save(product);
-        return "redirect:/listproduct";
+        return "addproduct";
     }
 
     @RequestMapping("/listproduct")
     public String listProduct(Model model, Product product){
         model.addAttribute("products", productRepository.findAll());
-       return "listproduct";
+       return "listproduct2";
     }
 
     @RequestMapping("/productsdetail/{id}")
@@ -100,7 +100,7 @@ public class HomeController {
     @RequestMapping("/productdelete/{id}")
     public String delPersonInfo(@PathVariable("id") long id){
         productRepository.delete(id);
-        return "redirect:/listproduct";
+        return "redirect:/listproduct2";
     }
 
     //Added full Mapping for CustomerForm to display to Customer List
