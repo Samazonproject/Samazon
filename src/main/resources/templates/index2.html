@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Samazon</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+<header>
+    <nav>
+        <h1 class="companyLogo">Samazon</a></h1>
+        <ul>
+            <li><a href="#">What We Do</a></li>
+            <li><a href="#">Our Philosophy</a></li>
+            <li><a href="#">Shopping</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Blog</a></li>
+            <li sec:authentication="name"><a th:href="@{/books/add}">Add product</a></li>
+            <li><a th:href="@{/books/list}">Show product list</a></li>
+            <li><a th:href="@{/addCustomer}">Add Customer</a></li>
+            <li><a th:href="@{/listCustomer}">Show Customerlist</a></li>
+            <li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
+            <li sec:ifLoggedIn><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+
+
+<div class="featuresSection">
+    <h1 class="sectionTitle">We're Samazon</h1>
+    <div class = "feature">
+        <i class="fa fa-2x fa-bolt" aria-hidden="true"></i>
+        <h2>Excellent Prices</h2>
+        <p>We find the best products at the lowest prices.</p>
+    </div>
+    <div class = "feature">
+        <i class="fa fa-2x fa-fire" aria-hidden="true"></i>
+        <h2>Hot Features</h2>
+        <p>Ipsum dol consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetrgravida.</p>
+    </div>
+    <div class = "feature">
+        <i class="fa fa-2x fa-ship" aria-hidden="true"></i>
+        <h2>Fresh Ideas</h2>
+        <p>Ipsum dol consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetrgravida.</p>
+    </div>
+    <div class = "feature">
+        <i class="fa fa-2x fa-times-circle-o" aria-hidden="true"></i>
+        <h2>Cool Support</h2>
+        <p>Ipsum dol consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetrgravida.</p>
+    </div>
+</div>
+
+
+
+
+
+<div class="modernSection">
+    <h1 class="sectionTitle">modern ideas</h1>
+    <h3>Services that you want and you like, the highest quality possible.</h3>
+    <div class="modernIdea">
+        <img src="https://static.pexels.com/photos/163136/old-retro-antique-vintage-163136.jpeg">
+        <h2>Everyone Wants</h2>
+        <p>We offer a wide portfolio of electronic engineering solutions and guarantee a smooth process of project implementation and it's easy</p>
+    </div>
+    <div class="modernIdea">
+        <img src="https://static.pexels.com/photos/2916/clothes-travel-voyage-backpack.jpg">
+        <h2>Tasty, Always</h2>
+        <p>We offer a wide portfolio of electronic engineering solutions and guarantee a smooth process of project implementation and it's easy</p>
+    </div>
+    <div class="modernIdea">
+        <img src="https://static.pexels.com/photos/131211/pexels-photo-131211.jpeg">
+        <h2>Elegant Look</h2>
+        <p>We offer a wide portfolio of electronic engineering solutions and guarantee a smooth process of project implementation and it's easy</p>
+    </div>
+    <div class="modernIdea">
+        <img src="https://static.pexels.com/photos/196485/pexels-photo-196485.jpeg">
+        <h2>Cool & Clean</h2>
+        <p>We offer a wide portfolio of electronic engineering solutions and guarantee a smooth process of project implementation and it's easy</p>
+    </div>
+</div>
+
+
+<div class="deepExperience">
+    <div class="deepColumnL">
+        <h1>Be the one who changes the world</h1>
+
+    </div>
+    <div class="deepColumnR">
+        <h1 class="sectionTitle"><i class="fa fa-wordpress" aria-hidden="true"></i>  Deep Experience</h1>
+        <p>We offer a wide portfolio of electronic engineering solutions and guarantee a smooth process of project implementation and its easy management for the client. We offer a wide portfolio of electronic engineering solutions and guarantee a smooth process of project implementation and its easy.</p>
+    </div>
+</div>
+
+
+<div class="fiftyfifty">
+    <div class="fifty">
+        <div class="fiftySection">
+            <i class="fa fa-5x fa-home" aria-hidden="true"></i>
+            <p>We offer a wide portfolio of electronic engineering solutions and guarantee a smooth process of project implementation and its easy management for the client.</p>
+        </div>
+    </div>
+    <div class="fifty">
+        <div class="fiftySection">
+            <i class="fa fa-5x fa-mobile" aria-hidden="true"></i>
+            <p>We offer a wide portfolio of electronic engineering solutions and guarantee a smooth process of project implementation and its easy management for the client.</p>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="reviewSection">
+    <div class="reviewHalf">
+        <img src="https://demo3.pixflow.net/the-moon/wp-content/uploads/sites/43/2014/10/iphone_06.png?dbe1e5">
+    </div>
+    <div class="reviewHalf">
+        <h1 class="sectionTitle"><i class="fa fa-user" aria-hidden="true"></i> Review</h1>
+        <p>We offer a wide portfolio of electronic engineering solutions and guarantee a smooth process of project implementation and its easy management for the client. We offer a wide portfolio of electronic engineering solutions and guarantee a smooth process of project implementation and its easy.</p>
+    </div>
+</div>
+
+
+
+<div class="stats">
+    <div class="statsGrid">
+        <h1>410</h1>
+        <h2>Awesome Tweets</h2>
+    </div>
+    <div class="statsGrid">
+        <h1>809</h1>
+        <h2>Facebook Likes</h2>
+    </div>
+    <div class="statsGrid">
+        <h1>254</h1>
+        <h2>Swears Given</h2>
+    </div>
+    <div class="statsGrid">
+        <h1>934</h1>
+        <h2>Google+</h2>
+    </div>
+</div>
+
+
+<div class="team">
+    <div class="teamTitle">
+        <h1 class="sectionTitle">Team Member</h1>
+    </div>
+    <div class="teamMember">
+        <img src="https://images.pexels.com/photos/159687/women-school-secretariat-model-159687.jpeg?w=940&h=650&auto=compress&cs=tinysrgb">
+        <div class="memberInfo">
+            <h2>Sara Smith</h2>
+            <p>Photographer</p>
+        </div>
+    </div>
+    <div class="teamMember">
+        <img src="https://images.pexels.com/photos/90789/pexels-photo-90789.jpeg?h=350&auto=compress&cs=tinysrgb">
+        <div class="memberInfo">
+            <h2>Jonathan Black</h2>
+            <p>Developer</p>
+        </div>
+    </div>
+    <div class="teamMember">
+        <img src="https://images.pexels.com/photos/139829/pexels-photo-139829.jpeg?h=350&auto=compress&cs=tinysrgb">
+        <div class="memberInfo">
+            <h2>Sam Simpson</h2>
+            <p>Producer</p>
+        </div>
+    </div>
+    <div class="teamMember">
+        <img src="https://images.pexels.com/photos/247903/pexels-photo-247903.jpeg?w=940&h=650&auto=compress&cs=tinysrgb">
+        <div class="memberInfo">
+            <h2>Jack Palace</h2>
+            <p>CEO</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="logos">
+    <div class="logoContainer">
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Bakrie_Logo.png">
+        </div>
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Walters_Art_Museum_logo_gray.png">
+        </div>
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Forestry_Commission_logo_green.svg/2000px-Forestry_Commission_logo_green.svg.png">
+        </div>
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Beats_Electronics_logo.svg/2000px-Beats_Electronics_logo.svg.png">
+        </div>
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Wikisource-logo.svg/410px-Wikisource-logo.svg.png">
+        </div>
+    </div>
+</div>
+
+<div class="blogs">
+    <h1 class="sectionTitle">News & Blog Posts</h1>
+    <div class="blogPost blogPost1">
+        <div class="blogContainer">
+            <h2>18</h2>
+            <div class="blogDate">
+                <h4>Nov 2014</h4>
+                <h3>A Short Film by ben briend</h3>
+            </div>
+        </div>
+    </div>
+    <div class="blogPost blogPost2">
+        <div class="blogContainer">
+            <h2>21</h2>
+            <div class="blogDate">
+                <h4>oct 2014</h4>
+                <h3>decorative design</h3>
+            </div>
+        </div>
+    </div>
+    <div class="blogPost blogPost3">
+        <div class="blogContainer">
+            <h2>13</h2>
+            <div class="blogDate">
+                <h4>oct 2014</h4>
+                <h3>fallen art</h3>
+            </div>
+        </div>
+    </div>
+    <div class="blogPost blogPost4">
+        <div class="blogContainer">
+            <h2>07</h2>
+            <div class="blogDate">
+                <h4>Oct 2014</h4>
+                <h3>general office-uk</h3>
+            </div>
+        </div>
+    </div>
+    <div class="blogPost blogPost5">
+        <div class="blogContainer">
+            <h2>05</h2>
+            <div class="blogDate">
+                <h4>oct 2014</h4>
+                <h3>quick access</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="contact">
+    <form class="contactForm">
+        <h1 class="sectionTitle">Contact Form</h1>
+        <div class="contactrow1">
+            <label for="name"></label>
+            <input type="text" id="name" name="name" placeholder = "Name">
+
+            <label for="email"></label>
+            <input type="email" id="email" name="email" placeholder = "Email">
+
+            <label for="subject"></label>
+            <input type="text" id="name" name="subject" placeholder = "Subject">
+        </div>
+        <label for="formmessage"></label>
+        <input type="text" id="form-message" name="message" placeholder = "Message">
+
+        <input type="submit" value= "Submit">
+    </form>
+</div>
+
+
+<footer>
+    <div class="socialMediaBar">
+        <ul>
+            <li><a href="https://facebook.com"><i class="fa fa-2x fa-facebook" aria-hidden="true"></i></a></li>
+            <li>
+                <a href="https://vimeo.com">
+                    <i class="fa fa-2x fa-vimeo" aria-hidden="true"></i></a>
+            </li>
+            <li><a href="https://google.com"><i class="fa fa-2x fa-google-plus" aria-hidden="true"></i></a></li>
+            <li><a href="http://subscriptions.com"><i class="fa fa-2x fa-rss" aria-hidden="true"></i></a></li>
+            <li><a href="http://instagram.com"><i class="fa fa-2x fa-instagram" aria-hidden="true"></i></a></li>
+        </ul>
+    </div>
+    <div class="signature">
+        <p>Copyright &copy; 2017 <a href="https://github.com/kahwasaurus/">LK Websites</a></p>
+    </div>
+
+</footer>
+
+</body>
+</html>

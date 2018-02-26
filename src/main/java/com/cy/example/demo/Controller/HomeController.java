@@ -1,7 +1,9 @@
 package com.cy.example.demo.Controller;
 
+import com.cy.example.demo.Models.Customer;
 import com.cy.example.demo.Models.Product;
 import com.cy.example.demo.Models.User;
+import com.cy.example.demo.Repositories.CustomerRepository;
 import com.cy.example.demo.Repositories.ProductRepository;
 import com.cy.example.demo.Service.UserService;
 import com.sun.org.apache.xpath.internal.operations.Bool;
@@ -29,11 +31,15 @@ public class HomeController {
     UserService userService;
 
     @Autowired
+    CustomerRepository customerRepository;
+
+
+    @Autowired
     ProductRepository productRepository;
 
     @RequestMapping("/")
     public String index(){
-        return "index";
+        return "index2";
     }
 
     @RequestMapping("/login")
@@ -62,7 +68,7 @@ public class HomeController {
             userService.saveUser(user);
             model.addAttribute("message","User Account Successfully Created");
         }
-        return "index";
+        return "index2";
     }
 
     @RequestMapping("/addproduct")
@@ -96,4 +102,55 @@ public class HomeController {
         productRepository.delete(id);
         return "redirect:/listproduct";
     }
+
+    //Added full Mapping for CustomerForm to display to Customer List
+
+    @GetMapping("/addCustomer")
+    public String customerForm(Model model){
+        model.addAttribute("customer", new Customer());
+        return "customerForm";
+    }
+
+    @PostMapping("/processCustomer")
+    public String customerForm(@Valid @ModelAttribute("customer") Customer customer, Model model, BindingResult result)
+    {
+        if (result.hasErrors()){
+            return "customerForm";
+        }
+
+        model.addAttribute("customers",customerRepository.findAll());
+        customerRepository.save(customer);
+        return "customerList";
+    }
+
+    @GetMapping("/listCustomer")
+    public String customerList(Model model){
+        model.addAttribute("customers",customerRepository.findAll());
+
+        return "customerList";
+    }
+
+
+
+
+    @GetMapping("/search")
+    public String getSearch(){
+        return "searchform";
+    }
+
+    @PostMapping("/search")
+    public String showSearchResults(HttpServletRequest request, Model model){
+        String searchProducts = request.getParameter("search");
+        model.addAttribute("search",searchProducts);
+//
+
+//        Expecting multiple parameters or else will throw No parameter available Need to pass as many as are in constructor in Entity.
+        model.addAttribute("productsearch",productRepository.findAllByProductNameContainingIgnoreCase(searchProducts));
+//
+        return "searchproductlist";
+    }
+
+
 }
+
+

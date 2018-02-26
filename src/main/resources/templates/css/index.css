@@ -1,0 +1,479 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; }
+body {
+    font-size: 1em;
+    color: #000;
+    overflow-x: hidden;
+    font-family: Roboto; }
+
+nav {
+    width: 100%;
+    height: 800px;
+    padding-top: 10px;
+    background-image: url('https://static.pexels.com/photos/2916/clothes-travel-voyage-backpack.jpg');
+    background-size: cover;
+    text-align: center;  }
+nav ul {
+    display:inline-block;
+    float: right; }
+nav ul li {
+    margin: 10px;
+    display: inline-block; }
+nav ul li a, nav ul li a:visited {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.8em;
+    font-family: lato;
+    font-weight: 100;
+    text-transform: uppercase;  }
+
+nav ul li a:hover {
+    color: #DF3030; }
+nav .companyLogo {
+    display: inline;
+    float: left;
+    margin: 5px 10px 10px 15px;
+    color: #fff;
+    font-family: tahoma;
+    font-variant: small-caps;
+    text-decoration: none;  }
+
+.sectionTitle {
+    font-size: 3.5em;
+    padding: 25px 0;
+    text-transform: uppercase; }
+.sectionTitle:before {
+    content: '| ';
+    color: #DF3030 ; }
+
+.featuresSection {
+    width: 100%;
+    padding: 100px 0 650px;
+    background: #DF3030; }
+
+.featuresSection>h1 {
+    text-align: center; }
+.feature {
+    font-weight: 100;
+    width: 40%;
+    text-align: center;
+    float: left;
+    color: #fff;
+    margin: 4% 5%;  }
+.feature h2 {
+    text-transform: uppercase;
+    margin: 10px 0; }
+.feature p {
+    font-size: 0.9em; }
+.feature .fa {
+    margin: 25px 0;
+    border: 1px solid #e04742;
+    background-color: #E04742;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    transition: font-size 0.3s ease-in-out;  }
+.feature .fa:hover {
+    font-size: 3em;  }
+.feature .fa:before, .fa:after {
+    line-height: 100px; }
+.feature .favicons i:hover {
+    transform: scale(1.2);
+    text-shadow: 1px 1px rgba(3, 2, 0, 0.9); }
+.feature>h1, .featuresRow>h5 {
+    color: #000;
+    text-transform: uppercase;  }
+.feature>h5 {
+    padding: 25px 0; }
+
+
+
+
+.modernSection {
+    width: 100%;
+    padding: 50px 0;
+    float: left;  }
+.modernSection h1, .modernSection h3 {
+    text-align: center; }
+.modernSection h3 {
+    color: #8a8a8a;
+    text-transform: uppercase;
+    margin-bottom: 100px; }
+.modernIdea {
+    width: 44%;
+    float: left;
+    margin: 1% 3%;
+    height: 500px;
+    text-align: center;
+    background-color: #F4F4F4;  }
+.modernIdea img {
+    width: 100%;
+    height: 200px;
+    margin: 0 auto; }
+
+.modernIdea h2 {
+    padding-top: 20px;
+    font-size: 2em;
+    color: #000; }
+
+.modernIdea p {
+    line-height: 1.3;
+    padding: 35px 30px;
+    hyphens: auto;
+    color: #666;  }
+
+
+
+
+
+.deepExperience {
+    width: 100%;
+    color: #fff;
+    float: left;
+    padding: 100px 0;
+    background-image: url('https://static.pexels.com/photos/2859/sea-man-person-ocean.jpg');
+    background-size: cover; }
+.deepColumnL {
+    width: 100%;
+    margin: 0%; }
+
+
+.deepColumnL h1 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 3em;
+    font-weight: 100;
+    padding: 25px 0;
+    font-family: 'Courier New'; }
+.deepColumnR .sectionTitle {
+    text-align: center; }
+.deepColumnR p {
+    font-family: arial;
+    padding: 50px;
+    text-align: justify;
+    line-height: 1.4em;  }
+
+
+
+
+.fiftyfifty {
+    width: 100%;
+    background: #DF3030;
+    color: #fff;
+    float: left;
+    padding: 25px 0 75px;  }
+.fifty {
+    width: 50%;
+    float: left;
+    padding: 0 5%; }
+/**/
+.fifty .fa {
+    width: 100%;
+    text-align: center;
+    padding: 25px 0; }
+.fifty p {
+    width: 100%; }
+
+
+
+
+
+
+
+.reviewSection {
+    width: 100%;
+    float: left;
+    padding: 100px 0;
+    background-color: #ccc;
+    background-image: url("https://www.transparenttextures.com/patterns/green-gobbler.png");
+}
+.reviewHalf {
+    float: left;
+    margin: 0 auto;
+    width: 100%; }
+.reviewHalf img {
+    max-height: 350px;
+    display: block;
+    margin: 0 auto;  }
+.reviewHalf p {
+    width: 80%;
+    margin: 0 10%;
+    text-align: justify; }
+
+.reviewHalf h1 {
+    width: 80%;
+    margin: 0 10%;
+    text-align: center; }
+
+
+
+
+
+
+.portfolio {
+    width: 100%;
+    padding: 20px 0; 	}
+.portfolioGrid {
+    float: left;
+    width: 33.3334%;   }
+.portfolio .portfolioTitle  {
+    font-family: arial;
+    padding: 25px 50px;  }
+.portfolio .portfolioTitle h3 {
+    color: #b8b8b8;
+    font-size: 1.45em;
+    font-weight: 100;  }
+.portfolioGrid img {
+    width: 100%;  }
+
+
+.stats {
+    display: inline-block;
+    width: 100%;
+    padding: 50px 0;
+    background-color: #282828;  }
+.statsGrid {
+    float: left;
+    width: 50%;
+    padding: 50px 0 ;
+    text-align: center;
+    color: #fff; }
+.statsGrid h1 {
+    font-size: 4.5em; }
+.statsGrid h2 {
+    text-transform: uppercase; }
+
+
+
+
+
+.team {
+    display: inline-block;
+    width: 90%;
+    padding: 75px 0;
+    margin: 5%; }
+.teamTitle h1 {
+    padding-bottom: 50px;
+    text-align: center; }
+.teamMember {
+    float: left;
+    width: 48%;
+    margin: 1%;
+    position: relative; }
+.teamMember img {
+    width: 100%;
+    background-position: 50% 50%; }
+.memberInfo h2 {
+
+    color: #FFD300;
+    text-shadow: 1px 1px 1px #000;
+    position: absolute;
+    bottom: 10%;
+    margin: 0 10px; }
+.memberInfo p {
+    color: #FFD300;
+    text-shadow: 1px 1px 1px #000;
+    position: absolute;
+    bottom: 5%;
+    margin: 0 10px; }
+
+
+
+
+
+.logos {
+    max-width: 100%;
+    background: #ddd;
+    padding: 75px 0;
+    margin: 5% 0; }
+.logoContainer {
+    line-height: 0;
+    font-size: 0; }
+.logo {
+    display: inline-block;
+    width: 20%;
+    padding: 3%; }
+.logos img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle; }
+
+
+
+.blogs {
+    width: 95%;
+    margin: 10% 2.5%; }
+.blogPost {
+    background-position: center;
+    background-size: cover;
+    height: 200px;
+    margin: 5px 0; }
+.blogPost1 {
+    background-image: url('http://ilovehdwallpapers.com/wallpapers//sad-lonely-girl-watching-city-buildings-in-morning-sunrise-1440x900.jpg'); }
+.blogPost2 {
+    background-image: url('https://static.pexels.com/photos/36948/pexels-photo.jpg'); }
+.blogPost3 {
+    background-image: url('https://static.pexels.com/photos/298863/pexels-photo-298863.jpeg'); }
+.blogPost4 {
+    background-image: url('https://static.pexels.com/photos/63951/pexels-photo-63951.jpeg'); }
+.blogPost5 {
+    background-image: url('https://static.pexels.com/photos/101533/pexels-photo-101533.jpeg'); }
+.blogContainer {
+    display: inline-block;
+    position: relative;
+    width: 100%; }
+
+.blogContainer h2 {
+    width: 40%;
+    float: left;
+    font-size: 8em;
+    line-height: 200px;
+    color: #fff; }
+
+.blogDate {
+    left: 40%;
+    float: left;
+    position: absolute;
+    top: 50%;
+    text-shadow: 2px 2px #000;
+    transform: translateY(-50%);
+    text-transform: uppercase;
+    color: #ccc; }
+.blogDate h3 {
+    font-size: 2em; }
+.blogDate h4 {
+    font-size: 1.3em; }
+
+
+.contact {
+    width: 100%;
+    background: url('images/sanfran.png') no-repeat;
+    background-size: cover; }
+
+.contactForm {
+    margin: 0 auto;
+    background-color: #fff;
+    width: 100%;
+    padding: 100px 0;
+    opacity: 0.6; }
+.contact h1 {
+    text-align: center; }
+.contactrow1 {
+    margin-left: 1.5%; }
+.contactForm input {
+    display: inline-block;
+    width: 91%;
+    padding: 20px 10px;
+    margin: 0 4.5%;
+    font-size: 1.2em;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #000; }
+.contactForm input[id="form-message"] {
+    display: block;
+    width: 90%;
+    padding: 20px 10px;
+    margin: 0 5%; }
+.contactForm input[type="submit"] {
+    display: block;
+    background-color: transparent;
+    width: 150px;
+    height: 50px;
+    border: 2px solid #000;
+    line-height: 15px;
+    border-radius: 5px;
+    margin: 25px auto; }
+.contactForm input[type="submit"]:hover, .contactForm input[type="submit"]:focus {
+    box-shadow: 2px 2px 2px #000;
+    opacity: 1; }
+
+
+footer {
+    width: 100%;
+    color: #888;
+    background-color: #f2f2f2;
+    text-align: center;
+    height: 100px;
+    line-height: 100px;
+    padding: 0 25px; }
+footer .socialMediaBar {
+    display: block;
+    line-height: 110px; }
+footer ul li {
+    display: inline-block;
+    padding: 0 15px;  }
+footer ul li a, footer ul li a:visited {
+    color: #888;
+    text-decoration: none;
+    text-transform: uppercase;  }
+footer ul li a:hover {
+    color: #DE302F; }
+footer .signature {
+    display: block; }
+
+
+/****** TABLET / DESKTOP VIEW ******/
+@media (min-width:961px)  {
+    .modernSection {
+        padding: 100px 0; }
+    .modernIdea {
+        width: 22%;
+        margin: 1% 1.5%; }
+    .featuresSection {
+        padding: 100px 0 300px; }
+    .feature {
+        width: 20%;
+        margin: 0 2.5%; }
+    .deepColumnL {
+        float: left;
+        width: 28%;
+        margin: 0 6%; }
+    .deepColumnL h1 {
+        font-size: 5em;
+        padding: 25px 0; }
+    .deepColumnR {
+        float: left;
+        width: 55%;
+        margin: 0 2.5%; }
+    .deepColumnR p {
+        padding: 10% 0;  }
+    .fiftyfifty {
+        padding: 100px 0; }
+    .fifty .fa {
+        float: left;
+        width: 30%;
+        padding: 0 1%; }
+    .fifty p {
+        float: left;
+        width: 70%;
+        padding: 0 1%; }
+    .reviewHalf {
+        width: 50%; }
+    .reviewHalf p,  .reviewHalf h1 {
+        margin: 0 20% 0 0; }
+    .reviewHalf h1 {
+        text-align: left; }
+    .statsGrid {
+        width: 25%;  }
+    .statsGrid h1 {
+        font-size: 6.5em; }
+    .teamMember {
+        width: 24%;
+        margin: 0.5%; }
+    .blogContainer h2 {
+        font-size: 12em; }
+    .contactForm input {
+        display: inline-block;
+        width: 28%;
+        margin: 10px 2%; }
+    .contactForm input[id="form-message"] {
+        display: block;
+        width: 91%;
+        margin: 2% 3.5%; }
+
+    footer .socialMediaBar {
+        width: 50%;
+        float: left;  }
+}
