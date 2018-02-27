@@ -1,62 +1,53 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 
     <link rel="stylesheet" href="../static/css/shoppingcart.css">
     <link rel="stylesheet" href="css/shoppingcart.css">
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
+<div th:replace="index2 :: header"></div>
 <div class="body-content">
     <div class="module">
 
         <table class="table table-striped">
             <thead class="thead-dark">
             <tr>
-                <input type="hidden" th:field="${product.id}">
-
                 <th scope="col">Product</th>
-                <th scope="col">Quantity</th>
+                <!--<th scope="col">Quantity</th>-->
                 <th scope="col">Unit Price</th>
-                <th scope="col">Total</th>
+                <!--
+                <th scope="col">Total</th>-->
             </tr>
-          </thead>
-         <tbody>
-           <tr class="row" th:each="product : ${products}">
+            </thead>
+            <tbody>
+            <tr class="row" th:each="product : ${products}">
                 <td th:text="${product.productName}"></td>
                 <td th:text="${product.price}"></td>
             </tr>
+            <tr>
+                <th scope="col">Total</th>
+            </tr>
+            <tr class="row">
+                <td th:text="${cart.totalPrice}"></td>
+            </tr>
+
             </tbody>
         </table><!-- /.container -->
 
         <div class="body-content">
             <div class="module">
 
-                <table class="table table-striped">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Product</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Unit Price</th>
-                        <th scope="col">Total</th>
-            </tr>
-          </thead>
-         <tbody>
-           <tr class="row" th:each="cart : ${cartslist}">
-               <input type="hidden" th:field="${shoppingcart.id}">
+                <div class="button-wrapper">
+                    <button type="button" class="btn btn-success btn-checkout" th:href="@{/confirmation}">CHECK OUT</button>
+                    <button type="button" class="btn btn-light btn-continous" th:href="@{/listproduct}">CONTINUE SHOPPING</button>
+                </div>
+                <small class="order-info">Your order will be shipped on the next 48hs.</small>
 
-               <td th:text="${cart.totalPrice}"></td>
-                    </tr>
-                    </tbody>
-                </table><!-- /.container -->
-
-        <div class="button-wrapper">
-            <button type="button" class="btn btn-success btn-checkout">CHECK OUT</button>
-            <button type="button" class="btn btn-light btn-continous">CONTINUE SHOPPING</button>
+                <span th:replace="fragment::bootstrap4js"></span>
+            </div>
         </div>
-        <small class="order-info">Your order will be shipped on the next 48hs.</small>
-
-        <span th:replace="fragment::bootstrap4js"></span>
-    </div>
-</div>
 </body>
 </html>

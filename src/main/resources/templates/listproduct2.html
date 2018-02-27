@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/productlist.css">
     <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
 <div th:replace="index2 :: header"></div>
-<div  class="container-fluid text-center">
+<div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-6" th:each="product : ${products}">
             <br>
@@ -18,23 +20,23 @@
                         <img th:src="${product.image}" alt="Product Image" class="product-image">
                     </figure>
 
-                    <div  class="product-description">
+                    <div class="product-description">
 
-                        <div  class="info">
+                        <div class="info">
                             <h1 th:inline="text">[[${product.productName}]] </h1>
-                            <p  th:inline="text">
+                            <p th:inline="text">
                                 [[${product.productDesc}]]
                             </p>
                         </div>
 
-                        <div  th:inline="text" class="price">
+                        <div th:inline="text" class="price">
                             [[${product.price}]]
                         </div>
                     </div>
 
-                    <form th:action="@{/addproducttoshoppingcart/{id} (id = ${product.id})}" method="post">
-                        <div class="product-sidebar">
-=                        <button class="buy" type="submit">
+
+                     <div class="product-sidebar">
+                        <button class="buy">
                             <input type="hidden" th:field="${product.id}">
                             <a th:href="@{/addproducttoshoppingcart/{id} (id = ${product.id})}">Buy Item</a>
                         </button>
@@ -55,7 +57,9 @@
           </span>
                         </button>
                     </div>
+                    <!--
                     </form>
+                    -->
                 </div>
 
                 <!--End of Product Row-->
@@ -64,13 +68,6 @@
     </div>
 </div>
 </div>
-
-
-
-
-
-
-
 
 
 <section>

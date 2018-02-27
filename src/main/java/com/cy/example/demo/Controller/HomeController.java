@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.HashSet;
 
 /**
  * Created by ${TravisGray} on 11/13/2017.
@@ -97,7 +98,7 @@ public class HomeController {
         return "addproducttocart";
     }
 
-
+/*
  @RequestMapping("/addproducttoshoppingcart/{id}")
  public String addproducttoshoppingcart(HttpServletRequest request,@ModelAttribute("shoppingcart")ShoppingCart shoppingCart, Model model){
 
@@ -114,6 +115,20 @@ public class HomeController {
 
      return "addproducttoshoppingcart";
  }
+ */
+
+    @RequestMapping("/addproducttoshoppingcart/{id}")
+    public String addproducttoshoppingcart(@PathVariable("id") long id, Model model, Authentication auth){
+        Product product =  productRepository.findOne(id);
+        User user = userRepository.findByUsername(auth.getName());
+        user.addProduct2ShoppingCart(product);
+        ShoppingCart sc = (ShoppingCart) user.getShoppingCarts().toArray()[0];
+        model.addAttribute("cart", sc);
+        model.addAttribute("products", sc.getProducts());
+        shoppingCartRepository.save(user.getShoppingCarts());
+        userRepository.save(user);
+        return "addproducttocart";
+    }
 
     @RequestMapping("/productsdetail/{id}")
     public String detailProduct(@PathVariable ("id") long id, Model model, Product product){
@@ -160,6 +175,25 @@ public class HomeController {
         model.addAttribute("productsearch",productRepository.findAllByProductNameContainingIgnoreCase(searchProducts));
 //
         return "searchproductlist";
+    }
+
+
+
+    // shows the order confirmation page and move shopping carts to orders
+    @GetMapping("/confirmation")
+    public String confirmation(Authentication auth){
+        User user = userRepository.findByUsername(auth.getName());
+        user.buyShoppingCart();
+        user.setShoppingCarts(new HashSet<>());
+        return "confirmation";
+    }
+
+    // shows the list of order hisotry
+    @GetMapping("/listhistory")
+    public String listHistory(Authentication auth, Model model){
+        User user = userRepository.findByUsername(auth.getName());
+        model.addAttribute("orders", user.getHistory());
+        return "listOrders";
     }
 
 

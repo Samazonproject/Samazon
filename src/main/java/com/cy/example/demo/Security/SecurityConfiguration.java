@@ -25,7 +25,6 @@ import static org.hibernate.criterion.Restrictions.and;
 //    In memory authenticiation want to keep on server currently running more difficult to get onto machine and keep autentician details. Very good for testing but you want encrypted databases for details
 
 
-
 //Once you have basic security setup , adding a login form is a simple process.
 
 //    Step 1: Create Login Form
@@ -40,8 +39,6 @@ import static org.hibernate.criterion.Restrictions.and;
 //    .formLogin().loginpage("/login").permitAll() This means that you are expecting a login form, which will display when you vist route: login everyone will be able to see this page
 //    if they are not Authenticated! This is the page people will see if they havent logged in yet, before they are directed to the page that they can see after
 //    logging in.
-
-
 
 
 //@Configuration and@EnableWebSecurity This indicates to the compiler that the file is a configuration file and
@@ -65,7 +62,7 @@ import static org.hibernate.criterion.Restrictions.and;
 //Runs before complier these are paths that people are premitted to vist and not
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-//WebSecruityConfigurerAdapter: http portocol to close off routes
+    //WebSecruityConfigurerAdapter: http portocol to close off routes
     @Autowired
     private SSUserDetailsService userDetailsService;
 //    These people have access from our database
@@ -99,7 +96,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/addproducttoshoppingcart/**"
     };
 
-//    HttpSecurity: tells us which routes people are allowed to acesses includes methods to restict or alllow access
+    //    HttpSecurity: tells us which routes people are allowed to acesses includes methods to restict or alllow access
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -139,22 +136,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //    remove the comments in the additional code. This is also the method in which you can configure how users are granted access to the appliaction if their details are stored in a database.
 
 
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
-    throws Exception{
+            throws Exception {
         auth.inMemoryAuthentication().
-        withUser("user").password("password").authorities("USER").
-        and().
-        withUser("dave").password("begreat").authorities("ADMIN");
+                withUser("user").password("password").authorities("USER").
+                and().
+                withUser("dave").password("begreat").authorities("ADMIN");
 
 //        Database Authentication must come after in memory authentication
         auth
                 .userDetailsService(userDetailsServiceBean());
 
     }
-
-
 
 
 }

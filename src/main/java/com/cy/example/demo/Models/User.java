@@ -2,6 +2,7 @@ package com.cy.example.demo.Models;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -34,6 +35,9 @@ public class User {
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<ShoppingCart> shoppingCarts;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<ShoppingCart> history;
 
 
     //use Fetch Type Eager user all data will be avivalible for this object
@@ -126,6 +130,22 @@ public class User {
 
     public void setShoppingCarts(Set<ShoppingCart> shoppingCarts) {
         this.shoppingCarts = shoppingCarts;
+    }
+
+    public Set<ShoppingCart> getHistory() {
+        return history;
+    }
+
+    public void setHistory(Set<ShoppingCart> history) {
+        this.history = history;
+    }
+
+    public void buyShoppingCart(){
+        ShoppingCart sc = (ShoppingCart) this.shoppingCarts.toArray()[0];
+        if(history == null){
+            history = new HashSet<>();
+        }
+        this.history.add(sc);
     }
 
     public void addProduct2ShoppingCart(Product product) {
