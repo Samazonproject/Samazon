@@ -24,7 +24,8 @@
             <li><a th:href="@{/register}">Register</a></li>
             <li><a th:href="@{/addproduct}">Add product</a></li>
             <li><a th:href="@{/listproduct}">Show product list</a></li>
-            <li><a th:href="@{/addCustomer}">Add Customer</a></li>
+            <li><a th:href="@{/register}">Register</a></li>
+            <li><a th:href="@{/search}">Search</a></li>
             <li><a th:href="@{/listCustomer}">Show Customerlist</a></li>
             <li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
             <li sec:ifLoggedIn><a href="/logout">Logout</a></li>

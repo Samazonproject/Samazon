@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+
+    <link rel="stylesheet" href="../static/css/shoppingcart.css">
+    <link rel="stylesheet" href="css/shoppingcart.css">
+</head>
+<body>
+<div class="body-content">
+    <div class="module">
+
+        <table class="table table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <input type="hidden" th:field="${product.id}">
+
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Unit Price</th>
+                <th scope="col">Total</th>
+            </tr>
+          </thead>
+         <tbody>
+           <tr class="row" th:each="product : ${products}">
+                <td th:text="${product.productName}"></td>
+                <td th:text="${product.price}"></td>
+            </tr>
+            </tbody>
+        </table><!-- /.container -->
+
+        <div class="body-content">
+            <div class="module">
+
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Unit Price</th>
+                        <th scope="col">Total</th>
+            </tr>
+          </thead>
+         <tbody>
+           <tr class="row" th:each="cart : ${cartslist}">
+               <input type="hidden" th:field="${shoppingcart.id}">
+
+               <td th:text="${cart.totalPrice}"></td>
+                    </tr>
+                    </tbody>
+                </table><!-- /.container -->
+
+        <div class="button-wrapper">
+            <button type="button" class="btn btn-success btn-checkout">CHECK OUT</button>
+            <button type="button" class="btn btn-light btn-continous">CONTINUE SHOPPING</button>
+        </div>
+        <small class="order-info">Your order will be shipped on the next 48hs.</small>
+
+        <span th:replace="fragment::bootstrap4js"></span>
+    </div>
+</div>
+</body>
+</html>

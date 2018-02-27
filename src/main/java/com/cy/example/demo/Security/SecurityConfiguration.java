@@ -95,7 +95,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/listCustomer",
             "/search",
             "/css/**",
-            "/templates/**"
+            "/templates/**",
+            "/addproducttoshoppingcart/**"
     };
 
 //    HttpSecurity: tells us which routes people are allowed to acesses includes methods to restict or alllow access

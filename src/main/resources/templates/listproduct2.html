@@ -32,9 +32,11 @@
                         </div>
                     </div>
 
-                    <div class="product-sidebar">
-                        <button class="buy">
-                            <span>BUY ITEM</span>
+                    <form th:action="@{/addproducttoshoppingcart/{id} (id = ${product.id})}" method="post">
+                        <div class="product-sidebar">
+=                        <button class="buy" type="submit">
+                            <input type="hidden" th:field="${product.id}">
+                            <a th:href="@{/addproducttoshoppingcart/{id} (id = ${product.id})}">Buy Item</a>
                         </button>
 
                         <button class="info">
@@ -53,7 +55,9 @@
           </span>
                         </button>
                     </div>
+                    </form>
                 </div>
+
                 <!--End of Product Row-->
             </div>
         </div>

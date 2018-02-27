@@ -32,6 +32,7 @@ public class Product {
         this.image = image;
     }
 
+
     public String getImage() {
         return image;
     }

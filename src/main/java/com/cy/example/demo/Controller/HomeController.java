@@ -24,12 +24,13 @@ import javax.validation.Valid;
 
 @Controller
 public class HomeController {
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
    private UserService userService;
 
-    @Autowired
-    private UserRepository userRepository;
+
 
 @Autowired
     ShoppingCartRepository shoppingCartRepository;
@@ -93,8 +94,26 @@ public class HomeController {
         Product product = productRepository.findOne(id);
         User user = userRepository.findByUsername(auth.getName());
         user.addProduct2ShoppingCart(product);
-        return "addproducttoshoppingcart";
+        return "addproducttocart";
     }
+
+
+ @RequestMapping("/addproducttoshoppingcart/{id}")
+ public String addproducttoshoppingcart(HttpServletRequest request,@ModelAttribute("shoppingcart")ShoppingCart shoppingCart, Model model){
+
+ String shoppingcartid = request.getParameter("shoppingcart.id");
+ String productid = request.getParameter("product.id");
+     shoppingCartRepository.save(shoppingCart);
+     shoppingCart.addProduct2ShoppingCart(productRepository.findOne(new Long(productid)));
+     shoppingCartRepository.save(shoppingCart);
+     model.addAttribute("cartslist", shoppingCartRepository.findAll());
+     model.addAttribute("products", productRepository.findAll());
+
+
+
+
+     return "addproducttoshoppingcart";
+ }
 
     @RequestMapping("/productsdetail/{id}")
     public String detailProduct(@PathVariable ("id") long id, Model model, Product product){
